@@ -31,6 +31,13 @@ Try to keep the commits as granular and as compact as possible to avoid merge co
 3. Start the dev server by using this command
    - `pnpm dev`
 
+### Frameworks Used
+
+1. [React](https://react.dev/)
+2. [Vite](https://vitejs.dev)
+3. [TailwindCSS](https://tailwindcss.com/)
+4. [Mantine](https://mantine.dev/)
+
 ## TESTS
 
 ### Unit Tests with Vitest
