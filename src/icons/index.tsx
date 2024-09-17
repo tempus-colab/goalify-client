@@ -31,10 +31,7 @@ export const Logo = () => (
         d="M88.0591 26.775H65.8791C62.8312 26.775 60.3708 24.4021 60.3708 21.4625V20.6125C60.3708 17.6729 62.8312 15.3 65.8791 15.3H84.5338V10.625H61.3256V7.22498H82.5508C85.5987 7.22498 88.0591 9.59789 88.0591 12.5375V26.775ZM84.5338 23.375V18.7H63.8961V23.375H84.5338Z"
         fill="black"
       />
-      <path
-        d="M95.6973 26.775H92.172V0H95.6973V26.775Z"
-        fill="black"
-      />
+      <path d="M95.6973 26.775H92.172V0H95.6973V26.775Z" fill="black" />
       <path
         d="M103.335 4.25H99.8101V0H103.335V4.25ZM103.335 26.775H99.8101V7.225H103.335V26.775Z"
         fill="black"
@@ -62,11 +59,7 @@ export const Logo = () => (
     </g>
     <defs>
       <clipPath id="clip0_45_2514">
-        <rect
-          width="164"
-          height="34"
-          fill="white"
-        />
+        <rect width="164" height="34" fill="white" />
       </clipPath>
     </defs>
   </svg>
@@ -80,22 +73,8 @@ export const Hamburger = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg">
     <title>Hamburger</title>
-    <rect
-      width="31"
-      height="2.52"
-      fill="black"
-    />
-    <rect
-      y="9.23999"
-      width="31"
-      height="2.52"
-      fill="black"
-    />
-    <rect
-      y="18.48"
-      width="31"
-      height="2.52"
-      fill="black"
-    />
+    <rect width="31" height="2.52" fill="black" />
+    <rect y="9.23999" width="31" height="2.52" fill="black" />
+    <rect y="18.48" width="31" height="2.52" fill="black" />
   </svg>
 );

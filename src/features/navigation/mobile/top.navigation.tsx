@@ -22,12 +22,7 @@ export function MobileTopNavigation() {
         </button>
       </nav>
 
-      <Drawer
-        opened={opened}
-        onClose={close}
-        size="xs"
-        position="right"
-      />
+      <Drawer opened={opened} onClose={close} size="xs" position="right" />
     </header>
   );
 }
