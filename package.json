@@ -37,6 +37,7 @@
     "autoprefixer": "^10.4.20",
     "clsx": "^2.1.1",
     "husky": "^9.1.5",
+    "lint-staged": "^15.2.10",
     "postcss": "^8.4.45",
     "postcss-preset-mantine": "^1.17.0",
     "postcss-simple-vars": "^7.0.1",
@@ -47,6 +48,16 @@
     "vite-plugin-svgr": "^4.2.0",
     "vite-tsconfig-paths": "^5.0.1",
     "vitest": "^2.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pnpm validate && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.ts?(x)": [
+      "git add"
+    ]
   },
   "keywords": [],
   "author": "",
