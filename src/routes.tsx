@@ -5,7 +5,7 @@ import { Home } from "pages/home";
 import { Planner } from "pages/planner";
 import { Stats } from "pages/stats";
 import { createBrowserRouter } from "react-router-dom";
-
+import AddGoal from "features/AddGoal";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -14,6 +14,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "AddGoal",  
+        element: <AddGoal />,
       },
       {
         path: "planner",

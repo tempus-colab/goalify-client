@@ -1,11 +1,14 @@
-import { Hamburger, Logo } from "icons";
-import { Link } from "react-router-dom";
+import { Logo } from "icons";
+import { Link, useNavigate} from "react-router-dom";
+import { Button } from "@mantine/core";
 
-import { Drawer } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
 
 export function MobileTopNavigation() {
-  const [opened, { open, close }] = useDisclosure();
+  const navigate = useNavigate();
+
+  const handleAddGoal = () => {
+    navigate("/AddGoal");
+  };
 
   return (
     <header>
@@ -14,15 +17,15 @@ export function MobileTopNavigation() {
           <Logo />
         </Link>
 
-        <button
-          type="button"
-          className="active:scale-95 transition-all "
-          onClick={open}>
-          <Hamburger />
-        </button>
+        <Button
+          onClick={handleAddGoal}
+          color="teal"
+          variant="outline "
+          className="font-size: 2 rem  font-bold rounded-full"
+        >
+          +
+        </Button>
       </nav>
-
-      <Drawer opened={opened} onClose={close} size="xs" position="right" />
     </header>
   );
 }
