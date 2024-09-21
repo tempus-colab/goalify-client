@@ -1,6 +1,6 @@
 import { Logo } from "icons";
 import { Link, useNavigate} from "react-router-dom";
-import { Button } from "@mantine/core";
+
 
 
 export function MobileTopNavigation() {
@@ -17,14 +17,12 @@ export function MobileTopNavigation() {
           <Logo />
         </Link>
 
-        <Button
+        <div
           onClick={handleAddGoal}
-          color="teal"
-          variant="outline "
-          className="font-size: 2 rem  font-bold rounded-full"
+          className="bg-white rounded-full w-8 h-8 flex items-center justify-center text-black text-2xl  "
         >
-          +
-        </Button>
+          <span className="relative" style={{ top: '-2px' }}>+</span>
+        </div>
       </nav>
     </header>
   );

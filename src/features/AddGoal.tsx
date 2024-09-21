@@ -1,5 +1,5 @@
 import {useState, useRef} from 'react';
-import {TextInput, Textarea, Select, Button, Group, Grid, Flex, ActionIcon, rem} from '@mantine/core';
+import {TextInput, Textarea, Select, Grid, Flex, ActionIcon, rem} from '@mantine/core';
 import {DatePickerInput, TimeInput} from '@mantine/dates';
 import { IconClock, IconHourglass, IconX, IconBell, IconPencil, IconCalendar } from '@tabler/icons-react';
 
@@ -37,30 +37,38 @@ const AddGoal = () => {
     );
 
     return (
-        <div className="flex flex-col justify-center items-center h-screen bg-white">
-            <div className="max-w-lg p-4 bg-white shadow-lg rounded-lg">
-                <div className="bg-gradient-to-r from-teal-400 to-green-400 p-4 rounded-t-lg flex justify-between items-center">
-                    <h1 className="text-xl font-semibold text-white">New Goal</h1>
-                    <ActionIcon variant="transparent">
-                    <IconX size={20} color="white" />
+        <div className="min-h-screen">
+            <div className="flex flex-col min-h-screen">
+                <div className="bg-gradient-to-r from-teal-400 to-green-400 p-4  flex justify-center items-center relative">
+                    <h1 className="text-xl font-semibold text-white text-center ">New Goal</h1>
+                    <ActionIcon variant="transparent" className="absolute left-36">
+                        <div className="">
+                            <div className="bg-white rounded-full w-6 h-6 flex items-center justify-center">
+                                <IconX size={16} />
+                            </div>
+                        </div>
                     </ActionIcon>
                 </div>
-                <div className="space-y-4 mt-4">
+                <div className="px-6 py-6 "
+>
                     <div>
-                        <Flex align="center" mb={4}>
+                        <Flex align="center" mb={8} pt={6}>
                             <IconPencil size={16} />
                             <label className="text-gray-700 font-medium">Goal</label>
                         </Flex>
-                        <TextInput
+                        <TextInput 
                             placeholder="Enter your goal"
                             value={goal}
                             onChange={(e) => setGoal(e.target.value)}
                             required
+                            classNames={{
+                                input: 'rounded-xl border border-black p-10 shadow-lg',
+                            }}
                         />
                     </div>
 
                     <div>
-                        <Flex align="center" mb={4}>
+                        <Flex align="center" mb={8} pt={6}>
                             <IconPencil size={16} />
                             <label className="text-gray-700 font-medium">Description</label>
                         </Flex>
@@ -69,11 +77,14 @@ const AddGoal = () => {
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             required
+                            classNames={{
+                                input: 'rounded-xl border border-black p-10 shadow-lg',
+                            }}
                         />
                     </div>
 
                     <div>
-                        <Flex align="center" mb={4}>
+                        <Flex align="center" mb={8} pt={6}>
                             <IconCalendar size={16} />
                             <label className="text-gray-700 font-medium">Due Date</label>
                         </Flex>
@@ -82,13 +93,16 @@ const AddGoal = () => {
                             value={value}
                             onChange={setValue}
                             required
+                            classNames={{
+                                input: 'rounded-xl border border-black p-10 shadow-lg',
+                            }}
                         />
                     </div>
 
 
                     <Grid>
-                        <Grid.Col span={6}>
-                            <Flex align="center" mb={4}>
+                        <Grid.Col span={6} >
+                            <Flex align="center" mb={8} pt={6}>
                                 <IconClock size={16} />
                                 <label className="text-gray-700 font-medium">Time</label>
                             </Flex>
@@ -99,11 +113,14 @@ const AddGoal = () => {
                                 value={time || ''}
                                 onChange={(e) => handleTimeChange(e.target.value)}
                                 required
+                                classNames={{
+                                    input: 'rounded-xl border border-black p-10 shadow-lg',
+                                }}
                             />
                         </Grid.Col>
 
                         <Grid.Col span={6}>
-                            <Flex align="center" mb={4}>
+                            <Flex align="center" mb={8} pt={6}>
                                 <IconHourglass size={16} />
                                 <label className="text-gray-700 font-medium">Duration</label>
                             </Flex>
@@ -128,12 +145,15 @@ const AddGoal = () => {
                                 value={duration}
                                 onChange={handleDurationChange}
                                 required
+                                classNames={{
+                                    input: 'rounded-xl border border-black p-10 shadow-lg',
+                                }}
                             />
                         </Grid.Col>
                     </Grid>
 
                     <div>
-                        <Flex  align="center" mb={4}>
+                        <Flex  align="center" mb={8} pt={6}>
                             <IconBell size={16} />
                             <label className="text-gray-700 font-medium">Reminder</label>
                         </Flex>            
@@ -157,13 +177,16 @@ const AddGoal = () => {
                             value={reminder}
                             onChange={handleReminderChange}
                             required
+                            classNames={{
+                                input: 'rounded-xl border border-black p-10 shadow-lg',
+                            }}
                         />
                     </div>
                 
-                    <div className="flex flex-col items-center space-y-4 mt-6">
+                    <div className="flex flex-col items-center space-y-4 mt-8">
                         <div
                             onClick={handleSubmit}
-                            className="cursor-pointer bg-gradient-to-r from-teal-400 to-green-400 text-white font-semibold text-lg px-12 py-3 rounded-full shadow-lg hover:from-teal-300 hover:to-green-300 text-center"
+                            className="cursor-pointer bg-gradient-to-r from-teal-400 to-green-400 text-white font-semibold text-lg px-28 py-3 rounded-full shadow-lg hover:from-teal-300 hover:to-green-300 text-center"
                         >
                             Confirm
                         </div>
