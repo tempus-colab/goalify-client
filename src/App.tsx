@@ -1,5 +1,5 @@
 import "@mantine/core/styles.css";
-
+import "@mantine/dates/styles.css";
 import React from "react";
 import { RouterProvider } from "react-router-dom";
 import { router } from "routes";
