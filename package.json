@@ -14,7 +14,10 @@
     "validate": "pnpm format && pnpm lint && pnpm check-types"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.9.0",
+    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/daygrid": "^6.1.15",
+    "@fullcalendar/interaction": "^6.1.15",
+    "@fullcalendar/react": "^6.1.15",
     "@mantine/core": "^7.12.2",
     "@mantine/dates": "^7.12.2",
     "@mantine/form": "^7.12.2",
@@ -22,10 +25,11 @@
     "@mantine/notifications": "^7.12.2",
     "@tabler/icons-react": "^3.17.0",
     "dayjs": "^1.11.13",
+    "mantine-form-zod-resolver": "^1.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-hook-form": "^7.53.0",
-    "react-router-dom": "^6.26.1"
+    "react-router-dom": "^6.26.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
@@ -57,7 +61,7 @@
   },
   "lint-staged": {
     "src/**/*.ts?(x)": [
-      "git add"
+      "git add ."
     ]
   },
   "keywords": [],
