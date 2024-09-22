@@ -21,7 +21,7 @@ function TopNavigation() {
 
 export function NavigationProvider({ children }: { children: ReactNode }) {
   return (
-    <main className="flex flex-col min-h-screen">
+    <main className="flex flex-col min-h-screen pb-24">
       <TopNavigation />
       {children}
       <BottomNavigation />
