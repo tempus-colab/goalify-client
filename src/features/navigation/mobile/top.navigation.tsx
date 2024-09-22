@@ -11,7 +11,7 @@ export function MobileTopNavigation() {
   };
 
   return (
-    <header>
+    <header className="sticky top-0 z-[5]">
       <nav className="flex lg:hidden items-center justify-between w-full bg-goal-gray-950 h-16 px-6">
         <Link to="/">
           <Image src="/goalify.png" alt="Logo" />
