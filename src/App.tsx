@@ -12,7 +12,7 @@ import { MantineProvider } from "@mantine/core";
 function App() {
   return (
     <React.Suspense>
-      <MantineProvider withCssVariables>
+      <MantineProvider>
         <RouterProvider router={router} />
       </MantineProvider>
     </React.Suspense>
