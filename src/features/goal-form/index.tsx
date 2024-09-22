@@ -168,9 +168,7 @@ export const GoalForm = ({
           radius="md"
           size="md"
           label={
-            <Flex
-              align="center"
-              gap={2}>
+            <Flex align="center" gap={2}>
               <IconBell size={18} />
               <label className="text-gray-700 font-medium">Reminder</label>
             </Flex>

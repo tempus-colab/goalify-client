@@ -4,9 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest",
-    "format": "biome format --write ./",
-    "lint": "biome lint ./",
-    "check-types": "tsc",
+    "check-types": "tsc -p tsconfig.json",
     "dev": "vite",
     "preview": "vite preview",
     "build": "vite build",
@@ -56,12 +54,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pnpm validate && lint-staged"
+      "pre-commit": "lint-staged && pnpm check-types"
     }
   },
   "lint-staged": {
     "src/**/*.ts?(x)": [
-      "git add ."
+      "biome format --write ./",
+      "biome lint ./"
     ]
   },
   "keywords": [],
