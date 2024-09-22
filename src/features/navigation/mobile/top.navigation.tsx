@@ -1,28 +1,29 @@
-import { Hamburger, Logo } from "icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import { Drawer } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+import { Image } from "@mantine/core";
+import { IconPlus } from "@tabler/icons-react";
 
 export function MobileTopNavigation() {
-  const [opened, { open, close }] = useDisclosure();
+  const navigate = useNavigate();
+
+  const handleAddGoal = () => {
+    navigate("/goals/new");
+  };
 
   return (
     <header>
-      <nav className="flex lg:hidden items-center justify-between w-full bg-goal-gray-500 h-16 px-6">
+      <nav className="flex lg:hidden items-center justify-between w-full bg-goal-gray-950 h-16 px-6">
         <Link to="/">
-          <Logo />
+          <Image src="/goalify.png" alt="Logo" />
         </Link>
 
         <button
           type="button"
-          className="active:scale-95 transition-all "
-          onClick={open}>
-          <Hamburger />
+          onClick={handleAddGoal}
+          className="bg-white rounded-full w-8 h-8 flex items-center justify-center text-black text-2xl">
+          <IconPlus />
         </button>
       </nav>
-
-      <Drawer opened={opened} onClose={close} size="xs" position="right" />
     </header>
   );
 }
