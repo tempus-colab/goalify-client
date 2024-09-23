@@ -7,6 +7,7 @@ export function MobileTopNavigation() {
   const navigate = useNavigate();
 
   const handleAddGoal = () => {
+
     navigate("/goals/new");
   };
 
