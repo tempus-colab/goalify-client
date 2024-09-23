@@ -22,13 +22,11 @@ function TopNavigation() {
 export function NavigationProvider({ children }: { children: ReactNode }) {
   const location = useLocation();
 
-  const isAddGoalPage = location.pathname === "/AddGoal";
-
   return (
-    <main className={`flex flex-col min-h-screen`}>
-      {!isAddGoalPage && <TopNavigation />}
+    <main className="flex flex-col min-h-screen pb-24">
+      <TopNavigation />
       {children}
-      {!isAddGoalPage && <BottomNavigation />}
+      <BottomNavigation />
     </main>
   );
 }
