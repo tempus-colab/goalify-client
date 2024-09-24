@@ -4,6 +4,7 @@ node_modules
 # LOCAL ENVIRONMENT VARIABLES
 .env
 .env*.local
+.env.sentry-build-plugin
 
 # LOGS
 *.log
