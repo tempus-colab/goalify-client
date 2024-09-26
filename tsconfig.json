@@ -1,11 +1,15 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.node.json"
+  "compilerOptions": {
+    "lib": ["ES2015", "DOM", "DOM.Iterable"],
+    "baseUrl": "./src",
+    "paths": {
+      "@features/*": ["features/*"],
+      "@pages/*": ["features/pages/*"]
     }
+  },
+  "include": ["src/**/*"],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
   ]
 }
