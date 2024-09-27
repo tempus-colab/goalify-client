@@ -22,8 +22,8 @@ function TopNavigation() {
 export function NavigationProvider({ children }: { children: ReactNode }) {
   const location = useLocation();
 
-  const isGoalFormPage = location.pathname === "/GoalForm";
-  const isEditGoalPage = location.pathname === "/EditGoal";
+  const isGoalFormPage = location.pathname === "/goals/new";
+  const isEditGoalPage = location.pathname === "/goals/:id/edit";
 
   return (
     <main className={"flex flex-col min-h-screen"}>

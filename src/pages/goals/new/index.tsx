@@ -1,26 +1,11 @@
-import { useForm, Controller } from "react-hook-form";
-import { useState, useRef } from "react";
-import {
-  Button,
-  TextInput,
-  Textarea,
-  Select,
-  Grid,
-  Flex,
-  ActionIcon,
-} from "@mantine/core";
+import { useForm } from "@mantine/form";
+import { Button, TextInput, Textarea, Select, Grid, Flex, ActionIcon } from "@mantine/core";
 import { DatePickerInput, TimeInput } from "@mantine/dates";
-import {
-  IconClock,
-  IconHourglass,
-  IconX,
-  IconBell,
-  IconPencil,
-  IconCalendar,
-} from "@tabler/icons-react";
+import { IconClock, IconHourglass, IconX, IconBell, IconPencil, IconCalendar } from "@tabler/icons-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./GoalForm.css";
+import { useRef } from "react";
+
 
 interface GoalFormData {
   goal: string;
@@ -32,39 +17,31 @@ interface GoalFormData {
 }
 
 const GoalForm = () => {
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-    control,
-  } = useForm<GoalFormData>();
+  const form = useForm<GoalFormData>({
+    initialValues: {
+      goal: "",
+      description: "",
+      dueDate: null,
+      time: "",
+      duration: "",
+      reminder: "",
+    },
+    validate: {
+      goal: (value) => (value ? null : "Goal is required"),
+      description: (value) => (value ? null : "Description is required"),
+      dueDate: (value) => (value ? null : "Due Date is required"),
+      time: (value) => (value ? null : "Time is required"),
+      duration: (value) => (value ? null : "Duration is required"),
+      reminder: (value) => (value ? null : "Reminder is required"),
+    },
+  });
+
   const navigate = useNavigate();
+  const timeInputRef = useRef<HTMLInputElement>(null);
 
-  const [duration, setDuration] = useState<string | null>(null);
-  const [reminder, setReminder] = useState<string | null>(null);
-
-  const [time, setTime] = useState<string | null>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const handleTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setTime(value);
-    setValue("time", value || "");
-  };
-
-  const pickerControl = (
-    <ActionIcon
-      variant="subtle"
-      color="gray"
-      onClick={() => inputRef.current?.showPicker()}>
-      <IconClock size={16} />
-    </ActionIcon>
-  );
-
-  const onSubmit = async (data: GoalFormData) => {
+  const onSubmit = async (values: GoalFormData) => {
     try {
-      const response = await axios.post("https://api.example.com/goals", data);
+      const response = await axios.post("https://api.example.com/goals", values);
       console.log("Goal submitted successfully", response.data);
     } catch (error) {
       console.error("Error submitting goal", error);
@@ -73,7 +50,7 @@ const GoalForm = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="bg-gradient-to-r from-teal-400 to-green-400 p-4  flex justify-center items-center relative">
+      <div className="bg-gradient-to-r from-teal-400 to-green-400 p-4 flex justify-center items-center relative">
         <h1 className="text-xl font-semibold text-white text-center ">
           New Goal
         </h1>
@@ -85,7 +62,7 @@ const GoalForm = () => {
         </button>
       </div>
 
-      <form className="grid gap-6 p-4" onSubmit={handleSubmit(onSubmit)}>
+      <form className="grid gap-6 p-4" onSubmit={form.onSubmit(onSubmit)}>
         <TextInput
           radius="md"
           size="md"
@@ -96,8 +73,8 @@ const GoalForm = () => {
             </Flex>
           }
           placeholder="Enter your goal"
-          {...register("goal", { required: "Goal is required" })}
-          error={errors.goal?.message}
+          {...form.getInputProps("goal")}
+          error={form.errors.goal}
           classNames={{ input: "border-2 border-goal-gray-200" }}
         />
 
@@ -111,39 +88,38 @@ const GoalForm = () => {
           }
           placeholder="Write a description"
           rows={4}
-          {...register("description", { required: "Description is required" })}
-          error={errors.description?.message}
+          {...form.getInputProps("description")}
+          error={form.errors.description}
         />
 
-        <Controller
-          name="dueDate"
-          control={control}
-          rules={{ required: "Due Date is required" }}
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <DatePickerInput
-              radius="md"
-              size="md"
-              label={
-                <Flex align="center">
-                  <IconCalendar size={18} />
-                  <label className="text-gray-700 font-medium">Due Date</label>
-                </Flex>
-              }
-              placeholder="Set a due date"
-              value={value}
-              onChange={onChange}
-              error={error?.message}
-            />
-          )}
+        <DatePickerInput
+          radius="md"
+          size="md"
+          label={
+            <Flex align="center">
+              <IconCalendar size={18} />
+              <label className="text-gray-700 font-medium">Due Date</label>
+            </Flex>
+          }
+          placeholder="Set a due date"
+          {...form.getInputProps("dueDate")}
+          error={form.errors.dueDate}
         />
-
+        
         <Grid>
-          <Grid.Col span={6}>
+        <Grid.Col span={6}>
+          
             <TimeInput
-              ref={inputRef}
-              rightSection={pickerControl}
-              value={time || ""}
-              onChange={handleTimeChange}
+              ref={timeInputRef} 
+              rightSection={
+                <ActionIcon
+                  variant="subtle"
+                  color="gray"
+                  onClick={() => timeInputRef.current?.showPicker()} 
+                >
+                  <IconClock size={16} />
+                </ActionIcon>
+              }
               radius="md"
               size="md"
               label={
@@ -153,7 +129,8 @@ const GoalForm = () => {
                 </Flex>
               }
               placeholder="Click Icon"
-              error={errors.time?.message}
+              {...form.getInputProps("time")}
+              error={form.errors.time}
             />
           </Grid.Col>
 
@@ -183,12 +160,8 @@ const GoalForm = () => {
                 { value: "4.5 hours", label: "4.5 hours" },
                 { value: "5 hours", label: "5 hours" },
               ]}
-              value={duration}
-              onChange={(value) => {
-                setDuration(value);
-                setValue("duration", value || "");
-              }}
-              error={errors.duration?.message}
+              {...form.getInputProps("duration")}
+              error={form.errors.duration}
             />
           </Grid.Col>
         </Grid>
@@ -218,15 +191,10 @@ const GoalForm = () => {
             { value: "4.5 hours before", label: "4.5 hours before" },
             { value: "5 hours before", label: "5 hours before" },
           ]}
-          value={reminder}
-          onChange={(value) => {
-            setReminder(value);
-            setValue("reminder", value || "");
-          }}
-          error={errors.reminder?.message}
+          {...form.getInputProps("reminder")}
+          error={form.errors.reminder}
         />
 
-        {/* Submit and Cancel Buttons */}
         <div className="flex flex-col items-center mt-8 gap-y-1">
           <button
             type="submit"

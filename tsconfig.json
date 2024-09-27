@@ -3,9 +3,9 @@
     "lib": ["ES2015", "DOM", "DOM.Iterable"],
     "baseUrl": "./src",
     "paths": {
-      "@features/*": ["features/*"],
-      "@pages/*": ["features/pages/*"]
-    }
+    "@features/*": ["./src/features/*"],
+    "@pages/*": ["./src/features/pages/*"]
+}
   },
   "include": ["src/**/*"],
   "references": [

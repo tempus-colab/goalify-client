@@ -6,7 +6,7 @@ export function MobileTopNavigation() {
   const navigate = useNavigate();
 
   const handleGoalForm = () => {
-    navigate("/GoalForm");
+    navigate("/goals/new");
   };
 
   return (
@@ -16,18 +16,14 @@ export function MobileTopNavigation() {
           <Image src="/goalify.png" alt="Logo" />
         </Link>
 
-        <div
+        <button
+          type="button"
           onClick={handleGoalForm}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") handleGoalForm();
-          }}
-          tabIndex={0}
-          role="button"
           className="bg-white rounded-full w-8 h-8 flex items-center justify-center text-black text-2xl">
           <span className="relative" style={{ top: "-2px" }}>
             +
           </span>
-        </div>
+        </button>
       </nav>
     </header>
   );

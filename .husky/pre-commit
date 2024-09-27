@@ -1,2 +1,5 @@
-npm run lint
-lint-staged && pnpm check-types
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npm test
+echo 'Husky is working'

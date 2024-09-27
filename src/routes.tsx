@@ -1,6 +1,5 @@
 import { SplashScreen } from "features/splash-screen";
 import { AppLayout } from "layout/app.layout";
-// import { NewGoal } from "pages/goals/new";
 import { Groups } from "pages/groups";
 import { SingleGroup } from "pages/groups/$id";
 import { Home } from "pages/home";
@@ -10,7 +9,9 @@ import { createBrowserRouter } from "react-router-dom";
 import GoalForm from "pages/goals/new/index";
 import EditGoal from "pages/goals/edit/index";
 
-export const router = createBrowserRouter([
+
+
+export const router: ReturnType<typeof createBrowserRouter> = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
@@ -25,11 +26,11 @@ export const router = createBrowserRouter([
         element: <SplashScreen />,
       },
       {
-        path: "GoalForm",
+        path: "goals/new",
         element: <GoalForm />,
       },
       {
-        path: "EditGoal",
+        path: "goals/:id/edit",
         element: <EditGoal />,
       },
       {

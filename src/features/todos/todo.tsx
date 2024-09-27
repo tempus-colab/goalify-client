@@ -13,7 +13,7 @@ export function Todo({ classNames, title, dueDate, ...props }: TodoProps) {
   const navigate = useNavigate();
 
   const handleEditGoal = () => {
-    navigate("/EditGoal");
+    navigate('/goals/:id/edit');
   };
 
   return (
