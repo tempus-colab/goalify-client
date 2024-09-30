@@ -23,17 +23,17 @@
     "@mantine/form": "^7.12.2",
     "@mantine/hooks": "^7.12.2",
     "@mantine/notifications": "^7.12.2",
-    "@remix-run/router": "^1.19.2",
+    
     "@tabler/icons-react": "^3.17.0",
     "@tanstack/react-query": "^5.56.2",
     "@tanstack/react-query-devtools": "^5.56.2",
     "axios": "^1.7.7",
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",
-    "mantine-form-zod-resolver": "^1.1.0",
+    "mantine-form": "^1.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-hook-form": "^7.53.0",
+    
     "react-router-dom": "^6.26.1",
     "zod": "^3.23.8"
   },
