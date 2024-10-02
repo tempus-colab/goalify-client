@@ -2,6 +2,7 @@ import { Checkbox, type CheckboxProps } from "@mantine/core";
 import { cn } from "lib/cn";
 import { format } from "date-fns";
 import { DotsHorizontal } from "icons";
+import { useNavigate } from "react-router-dom";
 
 interface TodoProps extends CheckboxProps {
   title: string;
@@ -9,6 +10,12 @@ interface TodoProps extends CheckboxProps {
 }
 
 export function Todo({ classNames, title, dueDate, ...props }: TodoProps) {
+  const navigate = useNavigate();
+
+  const handleEditGoal = () => {
+    navigate('/goals/:id/edit');
+  };
+
   return (
     <Checkbox
       {...props}
@@ -18,7 +25,7 @@ export function Todo({ classNames, title, dueDate, ...props }: TodoProps) {
 
           <p className="flex items-center gap-1 px-1 decora">
             <span>{format(dueDate, "h:mm a")}</span>
-            <button type="button">
+            <button type="button" onClick={handleEditGoal}>
               <DotsHorizontal />
             </button>
           </p>
