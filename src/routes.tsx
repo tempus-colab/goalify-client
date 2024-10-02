@@ -1,16 +1,17 @@
 import { SplashScreen } from "features/splash-screen";
 import { AppLayout } from "layout/app.layout";
-import { EditGoal } from "pages/goals/edit";
-import { NewGoal } from "pages/goals/new";
 import { Groups } from "pages/groups";
 import { SingleGroup } from "pages/groups/$id";
 import { Home } from "pages/home";
 import { Planner } from "pages/planner";
 import { Stats } from "pages/stats";
 import { createBrowserRouter } from "react-router-dom";
-import AddGoal from "features/AddGoal";
+import GoalForm from "pages/goals/new/index";
+import EditGoal from "pages/goals/edit/index";
 
-export const router = createBrowserRouter([
+
+
+export const router: ReturnType<typeof createBrowserRouter> = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
@@ -25,8 +26,12 @@ export const router = createBrowserRouter([
         element: <SplashScreen />,
       },
       {
-        path: "AddGoal",  
-        element: <AddGoal />,
+        path: "goals/new",
+        element: <GoalForm />,
+      },
+      {
+        path: "goals/:id/edit",
+        element: <EditGoal />,
       },
       {
         path: "planner",
@@ -41,24 +46,6 @@ export const router = createBrowserRouter([
         children: [
           { index: true, element: <Groups /> },
           { path: ":id", element: <SingleGroup /> },
-        ],
-      },
-      {
-        path: "goals",
-        children: [
-          {
-            path: "new",
-            element: <NewGoal />,
-          },
-          {
-            path: ":id",
-            children: [
-              {
-                path: "edit",
-                element: <EditGoal />,
-              },
-            ],
-          },
         ],
       },
     ],

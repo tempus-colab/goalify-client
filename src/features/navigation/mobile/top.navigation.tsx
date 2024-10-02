@@ -1,13 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
-
+import  { IconPlus } from "@tabler/icons-react";
 import { Image } from "@mantine/core";
-import { IconPlus } from "@tabler/icons-react";
 
 export function MobileTopNavigation() {
   const navigate = useNavigate();
 
-  const handleAddGoal = () => {
-
+  const handleGoalForm = () => {
     navigate("/goals/new");
   };
 
@@ -20,9 +18,11 @@ export function MobileTopNavigation() {
 
         <button
           type="button"
-          onClick={handleAddGoal}
+          onClick={handleGoalForm}
           className="bg-white rounded-full w-8 h-8 flex items-center justify-center text-black text-2xl">
-          <IconPlus />
+          <span className="relative" style={{ top: "1px" }}>
+          <IconPlus size={20} />
+          </span>
         </button>
       </nav>
     </header>
