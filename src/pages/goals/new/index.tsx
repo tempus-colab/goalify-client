@@ -100,9 +100,9 @@ const NewGoal = () => {
             radius="md"
             size="md"
             label={
-              <Flex align="center">
+              <Flex align="center" gap={8}>
                 <IconPencil size={18} />
-                <label className="text-gray-700 font-medium">Goal</label>
+                <label className="text-gray-700 font-medium ">Goal</label>
               </Flex>
             }
             placeholder="Enter your goal"
@@ -114,7 +114,7 @@ const NewGoal = () => {
           <Textarea
             radius="md"
             label={
-              <Flex align="center">
+              <Flex align="center" gap={8}>
                 <IconPencil size={18} />
                 <label className="text-gray-700 font-medium">Description</label>
               </Flex>
@@ -129,7 +129,7 @@ const NewGoal = () => {
             radius="md"
             size="md"
             label={
-              <Flex align="center">
+              <Flex align="center" gap={8}>
                 <IconCalendar size={18} />
                 <label className="text-gray-700 font-medium">Due Date</label>
               </Flex>
@@ -154,7 +154,7 @@ const NewGoal = () => {
                 radius="md"
                 size="md"
                 label={
-                  <Flex align="center">
+                  <Flex align="center" gap={8}>
                     <IconClock size={18} />
                     <label className="text-gray-700 font-medium">Time</label>
                   </Flex>
@@ -170,7 +170,7 @@ const NewGoal = () => {
                 radius="md"
                 size="md"
                 label={
-                  <Flex align="center">
+                  <Flex align="center" gap={8}>
                     <IconHourglass size={18} />
                     <label className="text-gray-700 font-medium">
                       Duration
@@ -204,7 +204,7 @@ const NewGoal = () => {
             radius="md"
             size="md"
             label={
-              <Flex align="center" gap={2}>
+              <Flex align="center" gap={8}>
                 <IconBell size={18} />
                 <label className="text-gray-700 font-medium">Reminder</label>
               </Flex>
