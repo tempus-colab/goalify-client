@@ -26,21 +26,34 @@
   animation: gradientFill 5s steps(4) 1s forwards;
 }
 
-/* Animation to reveal gradient in 4 steps */
-/* @keyframes gradientFill {
-  0% {
-    background-position: 100% 0;
-  }
-  25% {
-    background-position: 75% 0;
-  }
-  50% {
-    background-position: 50% 0;
-  }
-  75% {
-    background-position: 25% 0;
-  }
-  100% {
-    background-position: 0 0;
-  }
-} */
+.calendar-header {
+  display: none !important;
+}
+
+.day-name {
+  text-transform: lowercase;
+  font-size: 12px !important;
+}
+.day-name::first-letter {
+  text-transform: uppercase;
+}
+
+.calender-week .day:hover {
+  background-color: red;
+}
+
+.selected {
+  background-color: transparent !important;
+  color: initial !important;
+  position: relative;
+}
+
+.selected::before {
+  content: "";
+  background-color: #0060c6;
+  position: absolute;
+  bottom: 0;
+  left: -6px;
+  height: 4px;
+  width: calc(100% + 6px);
+}

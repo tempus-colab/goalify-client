@@ -1,30 +1,27 @@
-import { Checkbox, type CheckboxProps } from "@mantine/core";
-import { cn } from "lib/cn";
-import { format } from "date-fns";
 import { DotsHorizontal } from "icons";
+import { cn } from "lib/cn";
 import { useNavigate } from "react-router-dom";
 
-interface TodoProps extends CheckboxProps {
-  title: string;
-  dueDate: Date;
-}
+import { Checkbox } from "@mantine/core";
 
-export function Todo({ classNames, title, dueDate, ...props }: TodoProps) {
+import { useUpdateGoal } from "./hooks";
+import type { ITodo } from "./types";
+
+export function Todo(todo: ITodo) {
+  const markAsCompleted = useUpdateGoal();
   const navigate = useNavigate();
 
-  const handleEditGoal = () => {
-    navigate('/goals/:id/edit');
-  };
+  const handleEditGoal = () => navigate("/goals/:id/edit");
 
   return (
     <Checkbox
-      {...props}
+      key={todo.id}
       label={
         <>
-          <span>{title}</span>
+          <span>{todo.name}</span>
 
           <p className="flex items-center gap-1 px-1 decora">
-            <span>{format(dueDate, "h:mm a")}</span>
+            <span>{todo.time}</span>
             <button type="button" onClick={handleEditGoal}>
               <DotsHorizontal />
             </button>
@@ -35,19 +32,23 @@ export function Todo({ classNames, title, dueDate, ...props }: TodoProps) {
       radius="9px"
       color="#001514"
       classNames={{
-        ...classNames,
         label: cn(
           "!text-base !flex justify-between items-center !w-full flex-1 gap-8",
+          todo.completed && "opacity-50",
         ),
         labelWrapper: "flex-1",
         body: cn(
           "flex !items-center h-20",
-          props.checked && "line-through",
-          props.defaultChecked && "line-through",
+          todo.completed && "line-through",
+          todo.completed && "line-through",
         ),
         root: cn(""),
         input: cn("!border-[3px] !border-goal-gray-950"),
       }}
+      checked={todo.completed}
+      onChange={(event) =>
+        markAsCompleted({ ...todo, completed: event.currentTarget.checked })
+      }
       right={"Hello"}
     />
   );
