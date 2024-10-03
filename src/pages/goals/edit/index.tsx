@@ -1,10 +1,27 @@
-import { useForm} from "@mantine/form";
-import { Modal, Button, TextInput, Textarea, Select, Grid, Flex, ActionIcon } from "@mantine/core";
-import { DatePickerInput, TimeInput } from "@mantine/dates";
-import { IconClock, IconHourglass, IconX, IconBell, IconPencil, IconCalendar } from "@tabler/icons-react";
 import axios from "axios";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { useState, useRef } from "react";
+
+import {
+  ActionIcon,
+  Button,
+  Flex,
+  Grid,
+  Modal,
+  Select,
+  TextInput,
+  Textarea,
+} from "@mantine/core";
+import { DatePickerInput, TimeInput } from "@mantine/dates";
+import { useForm } from "@mantine/form";
+import {
+  IconBell,
+  IconCalendar,
+  IconClock,
+  IconHourglass,
+  IconPencil,
+  IconX,
+} from "@tabler/icons-react";
 
 interface EditGoalData {
   goal: string;
@@ -16,7 +33,6 @@ interface EditGoalData {
 }
 
 const EditGoal = () => {
-  const [opened, setOpened] = useState(true);
   const form = useForm<EditGoalData>({
     initialValues: {
       goal: "",
@@ -39,10 +55,12 @@ const EditGoal = () => {
   const navigate = useNavigate();
   const timeInputRef = useRef<HTMLInputElement>(null);
 
-
   const onSubmit = async (values: EditGoalData) => {
     try {
-      const response = await axios.post("https://api.example.com/goals", values);
+      const response = await axios.post(
+        "https://api.example.com/goals",
+        values,
+      );
       console.log("Goal submitted successfully", response.data);
     } catch (error) {
       console.error("Error submitting goal", error);
@@ -51,19 +69,17 @@ const EditGoal = () => {
 
   return (
     <Modal
-      opened={opened}
+      opened
       onClose={() => {
-        setOpened(false);
-        navigate(-1); 
+        navigate(-1);
       }}
       fullScreen
       padding="0"
-      withCloseButton={false} 
+      withCloseButton={false}
       radius={0}
       classNames={{
         body: "h-full p-8 overflow-auto",
-      }}
-    >
+      }}>
       <div className="flex flex-col h-full w-full">
         <div className="bg-gradient-to-r from-teal-400 to-green-400 p-4 flex justify-center items-center relative">
           <h1 className="text-xl font-semibold text-white text-center ">
@@ -74,7 +90,7 @@ const EditGoal = () => {
             type="button"
             className="absolute right-2  bg-white rounded-full w-8 h-8 flex items-center justify-center  text-[#00C4C6] p-0.5">
             <span className="relative" style={{ top: "1px" }}>
-            <IconX size={18} />
+              <IconX size={18} />
             </span>
           </button>
         </div>
@@ -122,17 +138,16 @@ const EditGoal = () => {
             {...form.getInputProps("dueDate")}
             error={form.errors.dueDate}
           />
-          
+
           <Grid>
-          <Grid.Col span={6}>
+            <Grid.Col span={6}>
               <TimeInput
-                ref={timeInputRef} 
+                ref={timeInputRef}
                 rightSection={
                   <ActionIcon
                     variant="subtle"
                     color="gray"
-                    onClick={() => timeInputRef.current?.showPicker()} 
-                  >
+                    onClick={() => timeInputRef.current?.showPicker()}>
                     <IconClock size={16} />
                   </ActionIcon>
                 }
@@ -157,7 +172,9 @@ const EditGoal = () => {
                 label={
                   <Flex align="center">
                     <IconHourglass size={18} />
-                    <label className="text-gray-700 font-medium">Duration</label>
+                    <label className="text-gray-700 font-medium">
+                      Duration
+                    </label>
                   </Flex>
                 }
                 placeholder="How long?"
@@ -231,4 +248,4 @@ const EditGoal = () => {
     </Modal>
   );
 };
-export default EditGoal;
+export { EditGoal };
