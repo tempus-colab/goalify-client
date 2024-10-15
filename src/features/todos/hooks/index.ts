@@ -5,3 +5,4 @@ export { useCreateGoal } from "./useCreateGoal";
 export { useDeleteGoal } from "./useDeleteGoal";
 export { useUpdateGoal } from "./useUpdateGoal";
 export { useGetSingleTodo } from "./useGetSingle";
+export { useGoalStreaks } from "./useGetStreaks";
