@@ -10,7 +10,6 @@
     "dev": "vite",
     "preview": "vite preview",
     "build": "vite build",
-    "prepare": "husky",
     "validate": "pnpm format && pnpm lint && pnpm check-types"
   },
   "dependencies": {
