@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import  { IconPlus } from "@tabler/icons-react";
+import { IconPlus } from "@tabler/icons-react";
 import { Image } from "@mantine/core";
 
 export function MobileTopNavigation() {
@@ -21,7 +21,7 @@ export function MobileTopNavigation() {
           onClick={handleGoalForm}
           className="bg-white rounded-full w-8 h-8 flex items-center justify-center text-black text-2xl">
           <span className="relative" style={{ top: "1px" }}>
-          <IconPlus size={20} />
+            <IconPlus size={20} />
           </span>
         </button>
       </nav>
