@@ -61,66 +61,98 @@ const EditGoal = () => {
       withCloseButton={false} 
       radius={0}
       classNames={{
-        body: "h-full p-8 overflow-auto",
+        body: "h-full overflow-auto",
       }}
     >
-      <div className="flex flex-col h-full w-full">
-        <div className="bg-gradient-to-r from-teal-400 to-green-400 p-4 flex justify-center items-center relative">
-          <h1 className="text-xl font-semibold text-white text-center ">
-            New Goal
+      <div className="flex flex-col h-full w-full font-outfit">
+        <div className="bg-gradient-to-r from-teal-400 to-green-400 p-8 flex justify-center items-center relative" >
+          <h1 className="text-4xl font-semibold text-white " style={{ marginTop: '10px' }}>
+            Edit Goal
           </h1>
           <button
             onClick={() => navigate(-1)}
-            type="button"
-            className="absolute right-2  bg-white rounded-full w-8 h-8 flex items-center justify-center  text-[#00C4C6] p-0.5">
-            <span className="relative" style={{ top: "1px" }}>
-            <IconX size={18} />
-            </span>
+            type="button" 
+            className="absolute right-6 bg-white rounded-full w-10 h-10 flex items-center justify-center  text-[#00C4C6] p-0.5">
+            
+            <IconX size={25} />
+            
           </button>
         </div>
 
-        <form className="grid gap-6 p-4" onSubmit={form.onSubmit(onSubmit)}>
+        <form className="grid gap-6 p-8 h-full w- max-w-md mx-auto" onSubmit={form.onSubmit(onSubmit)}>
           <TextInput
-            radius="md"
-            size="md"
+            radius="lg"
+            size="lg"
+            
+          
             label={
               <Flex align="center" gap={8}>
-                <IconPencil size={18} />
-                <label className="text-gray-700 font-medium">Goal</label>
+                <IconPencil size={20} />
+                <label className=" text-lg text-gray-700 font-medium ">Goal</label>
               </Flex>
             }
             placeholder="Enter your goal"
             {...form.getInputProps("goal")}
             error={form.errors.goal}
-            classNames={{ input: "border-2 border-goal-gray-200" }}
+            styles={{
+              input: {
+                borderWidth: '3px', 
+                borderColor: '#d1d5db', 
+                padding: '10px', 
+              },
+              label: {
+                fontSize: '1px', 
+              },
+            }}
           />
 
           <Textarea
-            radius="md"
+            radius="lg"
+            size="lg"
             label={
               <Flex align="center" gap={8}>
-                <IconPencil size={18} />
-                <label className="text-gray-700 font-medium">Description</label>
+                <IconPencil size={20} />
+                <label className=" text-lg text-gray-700 ">Description</label>
               </Flex>
             }
             placeholder="Write a description"
-            rows={4}
+            rows={5}
             {...form.getInputProps("description")}
             error={form.errors.description}
+            styles={{
+              input: {
+                borderWidth: '3px', 
+                borderColor: '#d1d5db', 
+                padding: '10px', 
+              },
+              label: {
+                fontSize: '14px', 
+              },
+            }}
           />
 
           <DatePickerInput
-            radius="md"
-            size="md"
+            radius="lg"
+            size="lg"
             label={
               <Flex align="center" gap={8}>
-                <IconCalendar size={18} />
-                <label className="text-gray-700 font-medium">Due Date</label>
+                <IconCalendar size={20} />
+                <label className=" text-lg text-gray-700 font-medium">Due Date</label>
               </Flex>
             }
             placeholder="Set a due date"
             {...form.getInputProps("dueDate")}
             error={form.errors.dueDate}
+            styles={{
+              input: {
+                borderWidth: '3px', 
+                borderColor: '#d1d5db', 
+                padding: '10px', 
+              },
+              label: {
+                fontSize: '14px', 
+              },
+            }}
           />
           
           <Grid>
@@ -136,28 +168,38 @@ const EditGoal = () => {
                     <IconClock size={16} />
                   </ActionIcon>
                 }
-                radius="md"
-                size="md"
+                radius="lg"
+                size="lg"
                 label={
                   <Flex align="center" gap={8}>
-                    <IconClock size={18} />
-                    <label className="text-gray-700 font-medium">Time</label>
+                    <IconClock size={20} />
+                    <label className=" text-lg text-gray-700 font-medium">Time</label>
                   </Flex>
                 }
                 placeholder="Click Icon"
                 {...form.getInputProps("time")}
                 error={form.errors.time}
+                styles={{
+                  input: {
+                    borderWidth: '3px', 
+                    borderColor: '#d1d5db', 
+                    padding: '10px', 
+                  },
+                  label: {
+                    fontSize: '14px', 
+                  },
+                }}
               />
             </Grid.Col>
 
             <Grid.Col span={6}>
               <Select
-                radius="md"
-                size="md"
+                radius="lg"
+                size="lg"
                 label={
                   <Flex align="center" gap={8}>
-                    <IconHourglass size={18} />
-                    <label className="text-gray-700 font-medium">Duration</label>
+                    <IconHourglass size={20} />
+                    <label className=" text-lg text-gray-700 ">Duration</label>
                   </Flex>
                 }
                 placeholder="How long?"
@@ -178,18 +220,29 @@ const EditGoal = () => {
                 ]}
                 {...form.getInputProps("duration")}
                 error={form.errors.duration}
+                styles={{
+                  input: {
+                    borderWidth: '3px', 
+                    borderColor: '#d1d5db', 
+                    padding: '10px', 
+                  },
+                  label: {
+                    fontSize: '14px', 
+                  },
+                }}
               />
             </Grid.Col>
           </Grid>
 
           <Select
             placeholder="Set a reminder time"
-            radius="md"
-            size="md"
+            
+            radius="lg"
+            size="lg"
             label={
               <Flex align="center" gap={8}>
-                <IconBell size={18} />
-                <label className="text-gray-700 font-medium">Reminder</label>
+                <IconBell size={20} />
+                <label className=" text-lg text-gray-700 ">Reminder</label>
               </Flex>
             }
             data={[
@@ -209,21 +262,40 @@ const EditGoal = () => {
             ]}
             {...form.getInputProps("reminder")}
             error={form.errors.reminder}
+            styles={{
+              input: {
+                borderWidth: '3px', 
+                borderColor: '#d1d5db', 
+                padding: '10px', 
+              },
+              label: {
+                fontSize: '14px', 
+              },
+            }}
           />
 
-          <div className="flex flex-col items-center mt-8 gap-y-1">
+          <div className="flex flex-col items-center mt-6 gap-y-6">
             <button
               type="submit"
-              className="rounded-3xl bg-gradient-to-r from-teal-400 to-green-400 p-3 w-full text-white font-bold active:scale-95 transition">
-              Confirm
+              className="rounded-3xl  bg-gradient-to-r from-teal-400 to-green-400 p-3 w-full text-xl text-white font-bold active:scale-95 transition">
+              Confirm Changes
             </button>
             <Button
               variant="transparent"
               type="button"
-              color="#001514"
+              color="black"
               fullWidth
-              onClick={() => navigate(-1)}>
-              Cancel
+              onClick={() => navigate(-1)}
+              className="rounded-3xl bg-white text-3xl py-2 w-full hover:bg-gray-100"
+              styles={{
+                root: {
+                  fontSize: '20px', // Make the text larger
+                  padding: ' 0', // Increase padding to make button taller
+                  width: '75%', // Full width
+                },
+              }}
+            > 
+              Delete Goal
             </Button>
           </div>
         </form>
