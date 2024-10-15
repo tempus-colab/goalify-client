@@ -25,12 +25,14 @@ export default defineConfig({
       org: "hemenses-organization",
       project: "goalify",
       url: "https://sentry.io/",
+      telemetry: false,
     }),
   ],
   server: {
-    port: 3000,
+    port: 5050,
   },
   build: {
     sourcemap: true,
   },
+  appType: "spa",
 });

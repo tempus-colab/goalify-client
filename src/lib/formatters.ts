@@ -1,4 +1,4 @@
-import { format, isToday, isTomorrow, isYesterday } from "date-fns";
+import { format, formatISO, isToday, isTomorrow, isYesterday } from "date-fns";
 
 export const uniformDateFormat = (
   date: Date | string | undefined | null,
@@ -22,3 +22,9 @@ export function calendarHeaderDate(date: Date): string {
   // Format as "Month Day" if none of the above
   return format(date, "MMMM d");
 }
+
+export const uniformDateReveral = (date: Date | string | undefined | null) => {
+  if (!date) return new Date();
+
+  return new Date(formatISO(date));
+};

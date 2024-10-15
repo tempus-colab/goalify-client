@@ -13,7 +13,7 @@ export function ProgressStatus({
   const calculateProgress = (value: number) => {
     if (done + todo === 0) return 0;
 
-    return (value / (done + todo)) * 100;
+    return Math.ceil((value / (done + todo)) * 100);
   };
 
   return (

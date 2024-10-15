@@ -1,6 +1,6 @@
 import { ProgressStatus } from "features/progress";
 import { EmptyState } from "features/todos/empty";
-import { useGetCompleted, useGetToDo } from "features/todos/hooks";
+import { useGetCompleted, useGetNotCompleted } from "features/todos/hooks";
 import { TodoList } from "features/todos/list";
 import { calendarHeaderDate } from "lib/formatters";
 import { useState } from "react";
@@ -10,7 +10,7 @@ export function Home() {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   const { result: completed } = useGetCompleted(currentDate);
-  const { result: toDo } = useGetToDo(currentDate);
+  const { result: toDo } = useGetNotCompleted(currentDate);
 
   const isEmpty = completed.length === 0 && toDo.length === 0;
 

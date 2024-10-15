@@ -3,7 +3,7 @@ import { useRxData } from "rxdb-hooks";
 
 import type { ITodo } from "../types";
 
-export function useGetToDo(date = new Date()) {
+export function useGetNotCompleted(date = new Date()) {
   const formattedDate = uniformDateFormat(date);
 
   return useRxData<ITodo>("goals", (collection) =>

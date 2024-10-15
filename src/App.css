@@ -57,3 +57,12 @@
   height: 4px;
   width: calc(100% + 6px);
 }
+
+.fc-scrollgrid {
+  border: none !important;
+}
+
+.fc-daygrid-day-top {
+  align-items: center;
+  justify-content: center;
+}
