@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import { useGetAllGoals } from "features/todos/hooks";
 import { uniformDateFormat } from "lib/formatters";
-import { useMemo, useRef } from "react";
+import { useRef, useState } from "react";
 
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -10,25 +10,19 @@ import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 
 export function GoalCalendar() {
   const calendarRef = useRef<FullCalendar | null>(null);
+  const [currentDate, setCurrentDate] = useState<Date | undefined>(new Date());
 
   function goNext() {
     const calendarApi = calendarRef?.current?.getApi();
     calendarApi?.next();
+    setCurrentDate(calendarRef.current?.getApi().getDate());
   }
 
   function goPrev() {
     const calendarApi = calendarRef?.current?.getApi();
     calendarApi?.prev();
+    setCurrentDate(calendarRef.current?.getApi().getDate());
   }
-
-  const currentDate = useMemo(
-    () =>
-      format(
-        calendarRef.current?.getApi().getDate() ?? new Date(),
-        "MMMM yyyy",
-      ),
-    [],
-  );
 
   const { result } = useGetAllGoals();
 
@@ -38,8 +32,8 @@ export function GoalCalendar() {
         <button type="button" onClick={goPrev}>
           <IconChevronLeft color="#B0B0B0" size={32} />
         </button>
-        <h4 className="text-2xl font-medium" key={currentDate}>
-          {currentDate}
+        <h4 className="text-2xl font-medium">
+          {format(currentDate ?? new Date(), "MMMM yyyy")}
         </h4>
         <button type="button" onClick={goNext}>
           <IconChevronRight color="#B0B0B0" size={32} />
@@ -70,7 +64,7 @@ export function GoalCalendar() {
         }))}
         eventClassNames={(arg) => {
           if (arg.isPast) {
-            return ["opacity-20 bg-red-400"];
+            return ["opacity-20", "!bg-gray-600", "!border-none"];
           }
           return [""];
         }}
