@@ -162,9 +162,7 @@ export const GoalForm = ({
                 label={
                   <Flex align="center" gap={4} mb={4}>
                     <IconClock size={18} />
-                    <label className="text-gray-700 font-medium">
-                      Duration
-                    </label>
+                    <label className="text-gray-700 font-medium">Time</label>
                   </Flex>
                 }
                 searchable
