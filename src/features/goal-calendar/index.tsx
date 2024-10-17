@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import { useGetAllGoals } from "features/todos/hooks";
 import { uniformDateFormat } from "lib/formatters";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -26,6 +27,8 @@ export function GoalCalendar() {
 
   const { result } = useGetAllGoals();
 
+  const navigate = useNavigate();
+
   return (
     <div>
       <div className="flex items-center justify-between px-4 py-2 mb-6">
@@ -45,7 +48,7 @@ export function GoalCalendar() {
         initialView="dayGridMonth"
         initialDate={new Date()}
         headerToolbar={false}
-        dateClick={(arg) => console.log(arg)}
+        dateClick={(arg) => navigate(`/?date=${uniformDateFormat(arg.date)}`)}
         dayHeaderContent={(val) => (
           <span className="text-sm font-medium">
             {val.text.substring(0, 1)}

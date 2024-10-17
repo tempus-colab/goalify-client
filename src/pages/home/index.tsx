@@ -1,13 +1,17 @@
 import { ProgressStatus } from "features/progress";
+import { ScrollableCalendar } from "features/scrollable-calendar";
 import { EmptyState } from "features/todos/empty";
 import { useGetCompleted, useGetNotCompleted } from "features/todos/hooks";
 import { TodoList } from "features/todos/list";
-import { calendarHeaderDate } from "lib/formatters";
 import { useState } from "react";
-import ScrollableCalendar from "react-calender-horizontal/lib/ScrollableCalendar";
+import { useSearchParams } from "react-router-dom";
 
 export function Home() {
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const [searchParams] = useSearchParams();
+
+  const [currentDate, setCurrentDate] = useState(
+    new Date(searchParams.get("date") ?? Date.now()),
+  );
 
   const { result: completed } = useGetCompleted(currentDate);
   const { result: toDo } = useGetNotCompleted(currentDate);
@@ -16,17 +20,10 @@ export function Home() {
 
   return (
     <div className="grid gap-6 pt-4">
-      <div className="border-b-2 border-[#e5e7eb] space-y-4">
-        <h3 className="text-center text-2xl font-semibold">
-          {calendarHeaderDate(currentDate)}
-        </h3>
-        <ScrollableCalendar
-          onDateSelect={setCurrentDate}
-          daysInWeek={7}
-          canSelectPastDates={true}
-          maxWidth="900px"
-        />
-      </div>
+      <ScrollableCalendar
+        currentDate={currentDate}
+        setCurrentDate={setCurrentDate}
+      />
 
       {isEmpty ? (
         <EmptyState />

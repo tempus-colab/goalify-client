@@ -1,4 +1,3 @@
-import { endOfWeek, startOfWeek } from "date-fns";
 import { generateTimeIntervals } from "lib/generateTime";
 import { zodResolver } from "mantine-form-zod-resolver";
 import type { ReactNode } from "react";
@@ -145,8 +144,6 @@ export const GoalForm = ({
                 <label className="text-gray-700 font-medium">Due Date</label>
               </Flex>
             }
-            minDate={startOfWeek(new Date())}
-            maxDate={endOfWeek(new Date())}
             placeholder="Set a due date"
             {...form.getInputProps("dueDate")}
             classNames={{
