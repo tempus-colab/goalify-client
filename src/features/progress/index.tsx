@@ -61,7 +61,7 @@ export function ProgressStatus({
               <IconCheck /> {Intl.NumberFormat("en").format(done)} Done
             </span>
             <span className="flex items-center gap-3">
-              <IconCircle /> {Intl.NumberFormat("en").format(todo)} ToDo
+              <IconCircle /> {Intl.NumberFormat("en").format(todo)} To Do
             </span>
           </div>
         </div>
