@@ -45,12 +45,19 @@ const EditGoal = () => {
   };
 
   return (
-    <GoalForm
-      key={values?.name}
-      initialValues={values}
-      onSubmit={(values) => updateTodo({ id, ...values })}>
-      <GoalForm.FormControl />
-    </GoalForm>
+      <Modal
+        opened
+        onClose={() => {}}
+        withCloseButton={false}
+        classNames={{ body: "h-full" }}
+        fullScreen>
+          <GoalForm
+            key={values?.name}
+            initialValues={values}
+            onSubmit={(values) => updateTodo({ id, ...values })}>
+            <GoalForm.FormControl />
+          </GoalForm>
+      </Modal>
   );
 };
 export { EditGoal };
