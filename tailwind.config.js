@@ -23,7 +23,7 @@ module.exports = {
     extend: {
       colors: appThemeColors,
       backgroundImage: {
-        "gradient-linear": "linear-gradient(90deg, #0060C6 0%, #00C4C6 100%)",
+        "gradient-linear": "linear-gradient(90deg, #00C666 0%, #00C4C6 100%)",
       },
     },
   },
