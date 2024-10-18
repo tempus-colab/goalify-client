@@ -8,7 +8,7 @@ import {
 } from "date-fns";
 import { cn } from "lib/cn";
 import { calendarHeaderDate } from "lib/formatters";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 
@@ -19,24 +19,24 @@ export const ScrollableCalendar = ({
   currentDate: Date;
   setCurrentDate: React.Dispatch<React.SetStateAction<Date>>;
 }) => {
-  const [weekDays, setWeekDays] = useState<Date[]>([]);
+  const generateWeekeDays = (date: Date) => {
+    const startOfCurrentWeek = startOfWeek(date, { weekStartsOn: 0 }); // Start week on Sunday
+    return Array.from({ length: 7 }, (_, i) => addDays(startOfCurrentWeek, i));
+  };
 
-  // Calculate the week starting from Sunday
-  useEffect(() => {
-    const startOfCurrentWeek = startOfWeek(currentDate, { weekStartsOn: 0 }); // Start week on Sunday
-    const daysArray = Array.from({ length: 7 }, (_, i) =>
-      addDays(startOfCurrentWeek, i),
-    );
-    setWeekDays(daysArray);
-  }, [currentDate]);
+  const [weekDays, setWeekDays] = useState<Date[]>(() =>
+    generateWeekeDays(currentDate),
+  );
 
   // Handlers for navigating between weeks
   const handleNextWeek = () => {
     setCurrentDate((prevDate) => addWeeks(prevDate, 1));
+    setWeekDays(generateWeekeDays(addWeeks(currentDate, 1)));
   };
 
   const handlePreviousWeek = () => {
     setCurrentDate((prevDate) => subWeeks(prevDate, 1));
+    setWeekDays(generateWeekeDays(subWeeks(currentDate, 1)));
   };
 
   return (
